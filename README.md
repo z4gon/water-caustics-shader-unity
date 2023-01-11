@@ -4,6 +4,8 @@ Water Caustics Shader implemented with Shader Graph in **Unity 2021.3.10f1**
 
 ## Screenshots
 
+![Picture](./docs/0.jpg)
+
 ## Table of Content
 
 - [Scene Setup](#scene-setup)
@@ -18,6 +20,10 @@ Water Caustics Shader implemented with Shader Graph in **Unity 2021.3.10f1**
   - [Caustics Distorted Triplanar](#caustics-distorted-triplanar)
   - [Caustics End Result](#caustics-end-result)
   - [Additive Caustics](#additive-caustics)
+  - [Oclussion](#oclussion)
+    - [Oclussion Screenshots](#oclussion-screenshots)
+  - [Global Illumination](#global-illumination)
+  - [Complete Graph](#complete-graph)
 
 ## Resources
 
@@ -196,3 +202,35 @@ https://user-images.githubusercontent.com/4588601/211900812-34b712c9-1257-4040-b
 <!-- 6.mp4 -->
 
 https://user-images.githubusercontent.com/4588601/211900916-0e3bea64-8756-44cb-83bf-23b42d215aae.mp4
+
+### Oclussion
+
+- Use a **Custom Function Node** to execute the **MainLight** **HLSL** function we wrote earlier.
+- Get the **Direction**, **Color**, **Distance Attenuation** and **Shadow Attenuation** for the main light.
+- Calculate a simple **Lambert shading** using the **dot** product of the **light direction** and the **Normal Vector**.
+- Multiply the **Distance** and **Shadow Attenuations** by the **Color** of the light.
+- Multiply everything together to calculate a **colorized oclussion mask** for the **caustics**.
+
+![Picture](docs/11-oclussion-graph.jpg)
+
+#### Oclussion Screenshots
+
+- Using different angles of light.
+
+![Picture](docs/8-oclussion.jpg)
+![Picture](docs/9-oclussion.jpg)
+![Picture](docs/10-oclussion.jpg)
+
+### Global Illumination
+
+- Use the **Baked GI Node** to access the **Ambient/Global Illumination** from the Scene.
+- Multiply it by the **Albedo** color coming from the **Main Texture**.
+
+![Picture](docs/12-albedo-gi.jpg)
+
+### Complete Graph
+
+- Multiply the **Oclussion** by the **Caustics** to mask it out.
+- Multiply the **Ocluded Caustics** by the **Albedo + Global Illumination**.
+
+![Picture](docs/13-graph.jpg)
