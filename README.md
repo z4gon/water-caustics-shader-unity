@@ -6,6 +6,9 @@ Water Caustics Shader implemented with Shader Graph in **Unity 2021.3.10f1**
 
 ![Picture](./docs/0.jpg)
 
+<!-- 7.mp4 -->
+https://user-images.githubusercontent.com/4588601/211918738-9f72c5b9-2ac6-4491-82b6-a09dcaf548a7.mp4
+
 ## Table of Content
 
 - [Scene Setup](#scene-setup)
@@ -217,6 +220,9 @@ https://user-images.githubusercontent.com/4588601/211900916-0e3bea64-8756-44cb-8
 
 - Using different angles of light.
 
+<!-- 8.mp4 -->
+https://user-images.githubusercontent.com/4588601/211918820-b7c9ca96-4518-42d9-b831-070ebcca4f11.mp4
+
 ![Picture](docs/8-oclussion.jpg)
 ![Picture](docs/9-oclussion.jpg)
 ![Picture](docs/10-oclussion.jpg)
@@ -227,6 +233,9 @@ https://user-images.githubusercontent.com/4588601/211900916-0e3bea64-8756-44cb-8
 - Multiply it by the **Albedo** color coming from the **Main Texture**.
 
 ![Picture](docs/12-albedo-gi.jpg)
+
+<!-- 10.mp4 -->
+https://user-images.githubusercontent.com/4588601/211918916-080f125c-ab90-44f1-b358-946a7c6546d0.mp4
 
 ### Complete Graph
 
