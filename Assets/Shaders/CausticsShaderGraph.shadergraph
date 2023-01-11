@@ -14,6 +14,9 @@
         },
         {
             "m_Id": "8e052ada814e4e1096d917256a74a612"
+        },
+        {
+            "m_Id": "2e8ae5ea981d492a8d8b97f33e590e00"
         }
     ],
     "m_Keywords": [],
@@ -98,6 +101,9 @@
         },
         {
             "m_Id": "b0ccb81fd9514b6f917a92c3cc8d1cbe"
+        },
+        {
+            "m_Id": "bfd154eb66594c069e69f0c45cc42d40"
         }
     ],
     "m_GroupDatas": [],
@@ -297,6 +303,20 @@
                     "m_Id": "b0ccb81fd9514b6f917a92c3cc8d1cbe"
                 },
                 "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "bfd154eb66594c069e69f0c45cc42d40"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "bdb6e57e3e714f038c1964a3fdab4409"
+                },
+                "m_SlotId": 7
             }
         },
         {
@@ -510,6 +530,9 @@
         },
         {
             "m_Id": "752cc0c8da7d4005b6c8162ab75a89a0"
+        },
+        {
+            "m_Id": "2e8ae5ea981d492a8d8b97f33e590e00"
         }
     ]
 }
@@ -615,6 +638,33 @@
         "w": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "2e8ae5ea981d492a8d8b97f33e590e00",
+    "m_Guid": {
+        "m_GuidSerialized": "202b8107-97c1-44d7-8b2a-b03241b83fc2"
+    },
+    "m_Name": "Caustics Texture Rotation",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Caustics Texture Rotation",
+    "m_DefaultReferenceName": "_Caustics_Texture_Rotation",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 90.0,
+    "m_FloatType": 1,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 180.0
+    }
 }
 
 {
@@ -1415,6 +1465,21 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "888160fd87cd490aa6ebe1cece8aa006",
+    "m_Id": 0,
+    "m_DisplayName": "Caustics Texture Rotation",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "8c89c4745b7a4964aa27fd3bb9d52f1e",
     "m_Id": 6,
     "m_DisplayName": "Speed",
@@ -1924,6 +1989,41 @@
     "m_FunctionName": "TriplanarProjection",
     "m_FunctionSource": "ba525efa8b0cc434b9edba86ae18bae8",
     "m_FunctionBody": "Enter function body here..."
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "bfd154eb66594c069e69f0c45cc42d40",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -1908.0001220703125,
+            "y": 269.99993896484377,
+            "width": 210.0,
+            "height": 34.00006103515625
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "888160fd87cd490aa6ebe1cece8aa006"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "2e8ae5ea981d492a8d8b97f33e590e00"
+    }
 }
 
 {

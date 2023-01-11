@@ -1,3 +1,5 @@
+// https://blog.unity.com/technology/custom-lighting-in-shader-graph-expanding-your-graphs-in-2019
+
 void MainLight_half(
     in float3 WorldPos, 
     out half3 Direction, 
@@ -18,7 +20,7 @@ void MainLight_half(
         #else
             half4 shadowCoord = TransformWorldToShadowCoord(WorldPos);
         #endif
-        
+
         Light mainLight = GetMainLight(shadowCoord);
         Direction = mainLight.direction;
         Color = mainLight.color;

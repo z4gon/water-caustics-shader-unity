@@ -1,3 +1,5 @@
+// https://docs.unity3d.com/Packages/com.unity.shadergraph@12.1/manual/Triplanar-Node.html
+
 #include "./UnityRotateDegrees.hlsl"
 
 void TriplanarProjection_float(

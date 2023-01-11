@@ -96,6 +96,7 @@ Material:
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
     - _Caustics_Speed: 0.055
+    - _Caustics_Texture_Rotation: 90
     - _Caustics_Tile: 0.12
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0

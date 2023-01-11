@@ -1,4 +1,5 @@
 // https://docs.unity3d.com/Packages/com.unity.shadergraph@12.1/manual/Rotate-Node.html
+
 float2 Unity_Rotate_Degrees_float(float2 UV, float2 Center, float Rotation)
 {
     Rotation = Rotation * (3.1415926f/180.0f);
