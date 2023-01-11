@@ -4,41 +4,42 @@ Water Caustics Shader implemented with Shader Graph in **Unity 2021.3.10f1**
 
 ## Screenshots
 
-### Table of Content
+## Table of Content
 
-- [Implementation](#implementation)
-  - [Scene Setup](#scene-setup)
-  - [HLSL](#hlsl)
-    - [Main Light](#main-light)
-    - [UV Rotation](#uv-rotation)
-    - [Triplanar Projection](#triplanar-projection)
-  - [Shader Graph](#shader-graph)
-    - [Caustics](#caustics)
-    - [Distortion](#distortion)
+- [Scene Setup](#scene-setup)
+- [HLSL](#hlsl)
+  - [Main Light](#main-light)
+  - [UV Rotation](#uv-rotation)
+  - [Triplanar Projection](#triplanar-projection)
+- [Shader Graph](#shader-graph)
+  - [Caustics Tiling and Speed](#caustics-tiling-and-speed)
+  - [Caustics Texture Rotation](#caustics-texture-rotation)
+  - [Caustics Distortion](#caustics-distortion)
+  - [Caustics Distorted Triplanar](#caustics-distorted-triplanar)
+  - [Caustics End Result](#caustics-end-result)
+  - [Additive Caustics](#additive-caustics)
 
-### Resources
+## Resources
 
 - [Custom Lighting in Shader Graph](https://blog.unity.com/technology/custom-lighting-in-shader-graph-expanding-your-graphs-in-2019)
 - [Caustics Texture](https://graphicdesign.stackexchange.com/questions/4725/how-can-i-create-a-large-size-water-caustics-texture-for-animation)
 - [Stylized Skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/free-stylized-skybox-212257)
 
-#### HLSL
+### HLSL Resources
 
 - [Triplanar ShaderGraph Node HLSL code](https://docs.unity3d.com/Packages/com.unity.shadergraph@12.1/manual/Triplanar-Node.html)
 - [UV Rotation ShaderGraph Node HLSL code](https://docs.unity3d.com/Packages/com.unity.shadergraph@12.1/manual/Rotate-Node.html)
 
-## Implementation
-
-### Scene Setup
+## Scene Setup
 
 - Built a basic pool and put some primitive objects inside.
 - Used the stlylized skybox to make the scene look more polished.
 
 ![Picture](./docs/1.jpg)
 
-### HLSL
+## HLSL
 
-#### Main Light
+### Main Light
 
 - Based on the example for implementing [custom lighting in Shader Graph](https://blog.unity.com/technology/custom-lighting-in-shader-graph-expanding-your-graphs-in-2019), we define the custom HLSL function to get the main light.
 - `SHADERGRAPH_PREVIEW` will be true while developing the shader in the Shader Graph node editor.
@@ -74,7 +75,7 @@ void MainLight_half(
 }
 ```
 
-#### UV Rotation
+### UV Rotation
 
 - Simply a copy paste of the HLSL code from the documentation for the [Shader Graph Node to do UV roation](https://docs.unity3d.com/Packages/com.unity.shadergraph@12.1/manual/Rotate-Node.html).
 
@@ -100,7 +101,7 @@ float2 Unity_Rotate_Degrees_float(float2 UV, float2 Center, float Rotation)
 }
 ```
 
-#### Triplanar Projection
+### Triplanar Projection
 
 - Based on the HLSL code from the [Shader Graph Node to do Triplanar Projection](https://docs.unity3d.com/Packages/com.unity.shadergraph@12.1/manual/Triplanar-Node.html).
 - The modifications for this include passing in a **Speed** and **Rotation** for the UVs.
@@ -142,31 +143,22 @@ void TriplanarProjection_float(
 }
 ```
 
-### Shader Graph
+## Shader Graph
 
-#### Caustics
+### Caustics Tiling and Speed
 
 - Define a **Custom Function** **Node** using the **Triplanar Projection** we defined in **HLSL**.
 - Set a **Caustics Texture**, a **Tiling** and a **Speed** for the **Offset** of the **UVs**.
 
 ![Picture](docs/4.jpg)
 
-<!-- 2.mp4 -->
-https://user-images.githubusercontent.com/4588601/211901051-12f48cee-8043-49a2-a86f-038454af41bc.mp4
-
-- Multiply by **Caustics Brightness** to make the caustics fade or appear more prominently.
-
-<!-- 4.mp4 -->
-https://user-images.githubusercontent.com/4588601/211901407-e1fcce37-8477-42f0-b173-19be54dbd26f.mp4
+### Caustics Texture Rotation
 
 - Make one of the Caustic Textures **rotated** by the amount determined by **Caustic Texture Rotation**.
 
 ![Picture](docs/5.jpg)
 
-<!-- 3.mp4 -->
-https://user-images.githubusercontent.com/4588601/211901291-573fbc33-1a56-41ed-a041-2da00f35044c.mp4
-
-#### Distortion
+### Caustics Distortion
 
 - Use the **Caustics Distortion Speed** multiplied by **Time**, to offset a **Vector2** composed by the **RG** channels of the **World Position** of the vertices.
 - Divide by **Caustics Distortion Factor**, to further modify the distortion.
@@ -176,25 +168,31 @@ https://user-images.githubusercontent.com/4588601/211901291-573fbc33-1a56-41ed-a
 ![Picture](docs/6.jpg)
 
 <!-- 5.mp4 -->
+
 https://user-images.githubusercontent.com/4588601/211901682-5cbfd3ca-0a71-4f15-9897-67d1f4868c0e.mp4
+
+### Caustics Distorted Triplanar
 
 - Use the **distorted** **World Position** of the vertices as input to **sample** the **Triplanar Projection**.
 
 ![Picture](docs/7.jpg)
+
+### Caustics End Result
 
 - The end result simulates the caustics of the water surface, but a much lower computational cost.
 
 ![Picture](docs/2.jpg)
 
 <!-- 1.mp4 -->
+
 https://user-images.githubusercontent.com/4588601/211900812-34b712c9-1257-4040-b864-cac7d016a8e0.mp4
+
+### Additive Caustics
 
 - **Add** the **caustics color** to a **primary Texture**, to **overlay** on top of whatever color the object has.
 
 ![Picture](docs/3.jpg)
 
 <!-- 6.mp4 -->
+
 https://user-images.githubusercontent.com/4588601/211900916-0e3bea64-8756-44cb-83bf-23b42d215aae.mp4
-
-
-
