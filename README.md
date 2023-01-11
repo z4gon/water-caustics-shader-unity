@@ -12,6 +12,9 @@ Water Caustics Shader implemented with Shader Graph in **Unity 2021.3.10f1**
     - [Main Light](#main-light)
     - [UV Rotation](#uv-rotation)
     - [Triplanar Projection](#triplanar-projection)
+  - [Shader Graph](#shader-graph)
+    - [Caustics](#caustics)
+    - [Distortion](#distortion)
 
 ### Resources
 
@@ -138,3 +141,37 @@ void TriplanarProjection_float(
     Out = Node_X * Node_Blend.x + Node_Y * Node_Blend.y + Node_Z * Node_Blend.z;
 }
 ```
+
+### Shader Graph
+
+#### Caustics
+
+- Define a **Custom Function** **Node** using the **Triplanar Projection** we defined in **HLSL**.
+- Set a **Caustics Texture**, a **Tiling** and a **Speed** for the **Offset** of the **UVs**.
+- Multiply by **Caustics Brightness** to make the caustics fade or appear more prominently.
+
+![Picture](docs/4.jpg)
+
+- Make one of the Caustic Textures **rotated** by the amount determined by **Caustic Texture Rotation**.
+
+![Picture](docs/5.jpg)
+
+#### Distortion
+
+- Use the **Caustics Distortion Speed** multiplied by **Time**, to offset a **Vector2** composed by the **RG** channels of the **World Position** of the vertices.
+- Divide by **Caustics Distortion Factor**, to further modify the distortion.
+- Use **Caustics Distortion Scale** to control the scale of the noise.
+
+![Picture](docs/6.jpg)
+
+- Use the **distorted** **World Position** of the vertices as input to **sample** the **Triplanar Projection**.
+
+![Picture](docs/7.jpg)
+
+- The end result simulates the caustics of the water surface, but a much lower computational cost.
+
+![Picture](docs/2.jpg)
+
+- **Add** the **caustics color** to a **primary Texture**, to **overlay** on top of whatever color the object has.
+
+![Picture](docs/3.jpg)
