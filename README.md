@@ -148,21 +148,35 @@ void TriplanarProjection_float(
 
 - Define a **Custom Function** **Node** using the **Triplanar Projection** we defined in **HLSL**.
 - Set a **Caustics Texture**, a **Tiling** and a **Speed** for the **Offset** of the **UVs**.
-- Multiply by **Caustics Brightness** to make the caustics fade or appear more prominently.
 
 ![Picture](docs/4.jpg)
+
+<!-- 2.mp4 -->
+https://user-images.githubusercontent.com/4588601/211901051-12f48cee-8043-49a2-a86f-038454af41bc.mp4
+
+- Multiply by **Caustics Brightness** to make the caustics fade or appear more prominently.
+
+<!-- 4.mp4 -->
+https://user-images.githubusercontent.com/4588601/211901407-e1fcce37-8477-42f0-b173-19be54dbd26f.mp4
 
 - Make one of the Caustic Textures **rotated** by the amount determined by **Caustic Texture Rotation**.
 
 ![Picture](docs/5.jpg)
 
+<!-- 3.mp4 -->
+https://user-images.githubusercontent.com/4588601/211901291-573fbc33-1a56-41ed-a041-2da00f35044c.mp4
+
 #### Distortion
 
 - Use the **Caustics Distortion Speed** multiplied by **Time**, to offset a **Vector2** composed by the **RG** channels of the **World Position** of the vertices.
 - Divide by **Caustics Distortion Factor**, to further modify the distortion.
+
 - Use **Caustics Distortion Scale** to control the scale of the noise.
 
 ![Picture](docs/6.jpg)
+
+<!-- 5.mp4 -->
+https://user-images.githubusercontent.com/4588601/211901682-5cbfd3ca-0a71-4f15-9897-67d1f4868c0e.mp4
 
 - Use the **distorted** **World Position** of the vertices as input to **sample** the **Triplanar Projection**.
 
@@ -172,6 +186,15 @@ void TriplanarProjection_float(
 
 ![Picture](docs/2.jpg)
 
+<!-- 1.mp4 -->
+https://user-images.githubusercontent.com/4588601/211900812-34b712c9-1257-4040-b864-cac7d016a8e0.mp4
+
 - **Add** the **caustics color** to a **primary Texture**, to **overlay** on top of whatever color the object has.
 
 ![Picture](docs/3.jpg)
+
+<!-- 6.mp4 -->
+https://user-images.githubusercontent.com/4588601/211900916-0e3bea64-8756-44cb-83bf-23b42d215aae.mp4
+
+
+
